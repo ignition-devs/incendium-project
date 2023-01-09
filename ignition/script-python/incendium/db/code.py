@@ -34,6 +34,7 @@ class DisposableConnection(object):
             retries (int): The number of additional times to retry
                 enabling the connection. Optional.
         """
+        super(DisposableConnection, self).__init__()
         self.database = database
         self.retries = retries
 
@@ -81,6 +82,7 @@ class Param(object):
             type_code (int): Type code constant.
             value (object): Value of type type_code.
         """
+        super(Param, self).__init__()
         self._name_or_index = name_or_index
         self._type_code = type_code
         self._value = value
