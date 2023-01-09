@@ -16,10 +16,10 @@ class ApplicationError(Exception):
             inner_exception (object): The inner Exception. Optional.
             cause (object): The cause of the Exception. Optional.
         """
+        super(ApplicationError, self).__init__()
         self.message = message
         self.inner_exception = inner_exception
         self.cause = cause
-        super(ApplicationError, self).__init__(message)
 
     def __repr__(self):
         """Compute the "official" string representation."""
@@ -44,8 +44,8 @@ class TagError(Exception):
         Args:
             message (str): The error message.
         """
+        super(TagError, self).__init__()
         self.message = message
-        super(TagError, self).__init__(message)
 
     def __repr__(self):
         """Compute the "official" string representation."""
