@@ -1,4 +1,4 @@
-# incendium
+# incendium-project
 
 <!--- Badges --->
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)](https://github.com/thecesrom/incendium/graphs/contributors)
@@ -25,23 +25,11 @@ _noun_.
 
 For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki).
 
-## Branches
+## Installing `incendium` as a Project on your Gateway
 
-This repository consists of the following branches:
+To install `incendium` on your Gateway follow these steps:
 
-### [code](https://github.com/thecesrom/incendium/tree/code)
-
-This branch will contain the source code for incendium's scripting functions.
-
-### [project](https://github.com/thecesrom/incendium/tree/project)
-
-This branch will contain the project folder structure as stored under `$IGNITION_DIR/data/projects`, and gives you the ability to get the latest code by cloning at the `projects` folder.
-
-## Installing incendium as a Project on your Gateway
-
-To install incendium on your Gateway follow these steps:
-
-1. Download **incendium.x.x.x.zip** from the [latest release](https://github.com/thecesrom/incendium/releases/latest) or from [Ignition Exchange](https://inductiveautomation.com/exchange/2104)
+1. Download **incendium.x.x.x.zip** from the [latest release](https://github.com/thecesrom/incendium-project/releases/latest) or from [Ignition Exchange](https://inductiveautomation.com/exchange/2104)
 1. Browse to your Ignition Gateway (version 8.0+)
 1. Go to **Config > Projects** and click on **Import project...**
 1. Click on **Choose File** and select the downloaded ZIP file
@@ -49,11 +37,11 @@ To install incendium on your Gateway follow these steps:
     - If you're replacing a previous version, make sure to check Allow Overwrite
 1. Click on **Import**
 
-Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](#cloning-this-branch).
+Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](#cloning-this-repo).
 
-## Cloning this branch
+## Cloning this repo
 
-If you would like to clone this branch to get the latest version directly under `$IGNITION_DIR/data/projects`, follow these steps:
+If you would like to clone this repo to get the latest version directly under `$IGNITION_DIR/data/projects`, follow these steps:
 
 1. Open your Terminal
 1. Switch to `$IGNITION_DIR/data/projects`
@@ -62,19 +50,19 @@ If you would like to clone this branch to get the latest version directly under 
     - HTTPS
 
         ```bash
-        git clone --single-branch --branch project https://github.com/thecesrom/incendium.git incendium
+        git clone https://github.com/thecesrom/incendium-project.git incendium
         ```
 
     - SSH
 
         ```bash
-        git clone --single-branch --branch project git@github.com:thecesrom/incendium.git incendium
+        git clone git@github.com:thecesrom/incendium-project.git incendium
         ```
 
     - GitHub CLI
 
         ```bash
-        gh repo clone thecesrom/incendium incendium -- --single-branch --branch project
+        gh repo clone thecesrom/incendium-project incendium
         ```
 
 1. And `git pull` to get the latest changes
@@ -87,7 +75,7 @@ To contribute to incendium, follow these steps:
 1. Create a local copy on your machine
 1. Create a branch
 1. Make your changes and commit them
-1. Push to the `code` branch
+1. Push to the `main` branch
 1. Create the pull request
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
