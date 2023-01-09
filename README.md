@@ -67,29 +67,20 @@ If you would like to clone this repo to get the latest version directly under `$
 
 1. And `git pull` to get the latest changes
 
-## Contributing to incendium
+## Contributing
 
-To contribute to incendium, follow these steps:
-
-1. Fork this repository
-1. Create a local copy on your machine
-1. Create a branch
-1. Make your changes and commit them
-1. Push to the `main` branch
-1. Create the pull request
-
-Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Contributors
 
 Thanks to everyone who has contributed to this project.
 
-Up-to-date list of contributors can be found [here](https://github.com/thecesrom/incendium/graphs/contributors).
+Up-to-date list of contributors can be found [here](https://github.com/thecesrom/incendium-project/graphs/contributors).
 
 ## License
 
-See the [LICENSE](https://github.com/thecesrom/incendium/blob/HEAD/LICENSE).
+See the [LICENSE](https://github.com/thecesrom/incendium-project/blob/HEAD/LICENSE).
 
 ## Code of conduct
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
