@@ -16,11 +16,11 @@ If you find a bug or if something is missing in the source code, you can help us
 
 ## Getting ready to contribute
 
-For **incendium** we rely on Python 3.10 to run tests and style checks with `pre-commit` and `tox`.
+For **incendium** we rely on Python 3.11 to run tests and style checks with `pre-commit` and `tox`.
 
 ### Setting up your local environment
 
-1. Install Python 3.10
+1. Install Python 3.11
 1. Install the tools
 
     1. [`pre-commit`](https://pre-commit.com/)
