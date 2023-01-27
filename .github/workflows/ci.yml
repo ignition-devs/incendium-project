@@ -12,8 +12,6 @@ env:
 jobs:
   test:
     runs-on: ubuntu-20.04
-    env:
-      PRE_COMMIT_HOME: ${{ github.workspace }}/.cache/pre-commit-cache
 
     steps:
       - name: Checkout repo
@@ -33,8 +31,8 @@ jobs:
       - name: Cache pre-commit
         uses: actions/cache@v3
         with:
-          path: ${{ env.PRE_COMMIT_HOME }}
-          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml', '.pylintrc', 'tox.ini') }}
           restore-keys: |
             ${{ runner.os }}-pre-commit-
 
