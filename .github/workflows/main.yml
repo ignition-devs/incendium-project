@@ -9,6 +9,6 @@ on:
 
 jobs:
   test:
-    uses: thecesrom/workflows/.github/workflows/tox.yml@v0.0.4
+    uses: thecesrom/workflows/.github/workflows/tox.yml@v1.1.1
     with:
       pre-commit: true
