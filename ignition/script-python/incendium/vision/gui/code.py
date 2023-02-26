@@ -17,6 +17,8 @@ __all__ = [
     "CURSOR_TEXT",
     "CURSOR_WAIT",
     "CURSOR_W_RESIZE",
+    "authentication",
+    "authorization",
     "confirm",
     "error",
     "info",
@@ -24,8 +26,10 @@ __all__ = [
     "warning",
 ]
 
+import system.security
 import system.util
-from javax.swing import JLabel, JOptionPane, JPanel, JTextField
+from java.awt import GridLayout
+from javax.swing import JLabel, JOptionPane, JPanel, JPasswordField, JTextField
 
 from incendium import constants
 
@@ -44,6 +48,130 @@ CURSOR_W_RESIZE = 10
 CURSOR_E_RESIZE = 11
 CURSOR_HAND = 12
 CURSOR_MOVE = 13
+
+
+def authentication(auth_profile="", title="Authentication"):
+    """Open up a popup input dialog box.
+
+    This dialog box will show a prompt message, and allow the user to
+    type in their username and password. When the user is done, they can
+    press "OK" or "Cancel". If "OK" is pressed, this function will
+    attempt to validate the User credentials against the Authentication
+    Profile. If "Cancel" is pressed, this function will return
+    ``False``.
+
+    Args:
+        auth_profile (str): The name of the authentication profile to
+            run against. Leaving this out will use the project's default
+            profile. Optional.
+        title (str): A title for the input box. This will be translated
+            to the selected Locale. Optional.
+
+    Returns:
+        bool: ``True`` if the user was validated, ``False`` otherwise.
+    """
+    options = [
+        system.util.translate(constants.OK_TEXT),
+        system.util.translate(constants.CANCEL_TEXT),
+    ]
+
+    panel = JPanel()
+
+    labels = JPanel(GridLayout(0, 1, 2, 2))
+    labels.add(JLabel("{}: ".format(system.util.translate("Username"))))
+    labels.add(JLabel("{}: ".format(system.util.translate("Password"))))
+    panel.add(labels)
+
+    fields = JPanel(GridLayout(0, 1, 2, 2))
+    username_field = JTextField(25)
+    fields.add(username_field)
+    password_field = JPasswordField(25)
+    fields.add(password_field)
+    panel.add(fields)
+
+    choice = JOptionPane.showOptionDialog(
+        None,
+        panel,
+        system.util.translate(title),
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE,
+        None,
+        options,
+        options[0],
+    )
+
+    valid = system.security.validateUser(
+        username=username_field.getText(),
+        password="".join(password_field.getPassword()),
+        authProfile=auth_profile,
+    )
+
+    return choice == JOptionPane.OK_OPTION and valid
+
+
+def authorization(role, auth_profile="", title="Athorization"):
+    """Open up a popup input dialog box.
+
+    This dialog box will show a prompt message, and allow the user to
+    type in their username and password. When the user is done, they can
+    press "OK" or "Cancel". If "OK" is pressed, this function will
+    attempt to validate the User credentials against the Authentication
+    Profile and verify if the User belongs to the ``role``. If "Cancel"
+    is pressed, this function will return ``False``.
+
+    Args:
+        role (str): Required role.
+        auth_profile (str): The name of the authentication profile to
+            run against. Leaving this out will use the project's default
+            profile. Optional.
+        title (str): A title for the input box. This will be translated
+            to the selected Locale. Optional.
+
+    Returns:
+        bool: ``True`` if the user was validated, ``False`` otherwise.
+    """
+    has_role = False
+
+    options = [
+        system.util.translate(constants.OK_TEXT),
+        system.util.translate(constants.CANCEL_TEXT),
+    ]
+
+    panel = JPanel()
+
+    labels = JPanel(GridLayout(0, 1, 2, 2))
+    labels.add(JLabel("{}: ".format(system.util.translate("Username"))))
+    labels.add(JLabel("{}: ".format(system.util.translate("Password"))))
+    panel.add(labels)
+
+    fields = JPanel(GridLayout(0, 1, 2, 2))
+    username_field = JTextField(25)
+    fields.add(username_field)
+    password_field = JPasswordField(25)
+    fields.add(password_field)
+    panel.add(fields)
+
+    choice = JOptionPane.showOptionDialog(
+        None,
+        panel,
+        system.util.translate(title),
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE,
+        None,
+        options,
+        options[0],
+    )
+
+    if choice == JOptionPane.OK_OPTION:
+        user_roles = system.security.getUserRoles(
+            username=username_field.getText(),
+            password="".join(password_field.getPassword()),
+            authProfile=auth_profile,
+        )
+        if user_roles is not None:
+            has_role = role in user_roles
+
+    return has_role
 
 
 def confirm(message, title="Confirm", show_cancel=False):
