@@ -1,6 +1,6 @@
 {
   "title": "incendium",
-  "description": "📦 Package that extends and wraps Ignition scripting API (version: 2023.1.0)",
+  "description": "📦 Package that extends and wraps Ignition scripting API (version: 2023.2.0)",
   "parent": "",
   "enabled": true,
   "inheritable": true
