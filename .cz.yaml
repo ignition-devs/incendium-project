@@ -6,4 +6,3 @@ commitizen:
   version: 2023.2.0
   version_files:
   - project.json
-  - ignition/script-python/incendium/version/code.py

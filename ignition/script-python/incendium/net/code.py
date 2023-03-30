@@ -57,17 +57,18 @@ def _send_email(subject, body, html, to, priority):
     )
 
 
-def report_error(subject, message, details, to):
-    """Send an Error Report email message.
+def send_html_email(subject, body, to, priority="3"):
+    """Send an email in HTML format.
 
     Args:
         subject (str): The subject line for the email.
-        message (str): The error message.
-        details (str): The error details.
-        to (list[str]): A list of emails addresses to send to.
+        body (str): The body text of the email in HTML format.
+        to (list[str]): A list of email addresses to send to.
+        priority (str): Priority of the message, from "1" to "5", with
+            "1" being highest priority. Defaults to "3" (normal)
+            priority. Optional.
     """
-    body = constants.ERROR_REPORT.format(message, _html_escape(details))
-    send_high_priority_email(subject, body, to)
+    _send_email(subject, body, True, to, priority)
 
 
 def send_high_priority_email(subject, body, to):
@@ -81,18 +82,17 @@ def send_high_priority_email(subject, body, to):
     send_html_email(subject, body, to, "1")
 
 
-def send_html_email(subject, body, to, priority="3"):
-    """Send an email in HTML format.
+def report_error(subject, message, details, to):
+    """Send an Error Report email message.
 
     Args:
         subject (str): The subject line for the email.
-        body (str): The body text of the email in HTML format.
-        to (list[str]): A list of email addresses to send to.
-        priority (str): Priority of the message, from "1" to "5", with
-            "1" being highest priority. Defaults to "3" (normal)
-            priority. Optional.
+        message (str): The error message.
+        details (str): The error details.
+        to (list[str]): A list of emails addresses to send to.
     """
-    _send_email(subject, body, True, to, priority)
+    body = constants.ERROR_REPORT.format(message, _html_escape(details))
+    send_high_priority_email(subject, body, to)
 
 
 def send_plain_text_email(subject, body, to, priority="3"):
