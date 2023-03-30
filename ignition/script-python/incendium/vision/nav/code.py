@@ -41,24 +41,6 @@ def _get_full_path(from_path, to_path):
     return path_separator.join(full_path)
 
 
-def swap_to(path, params=None):
-    """Perform a window swap.
-
-    This will swap from the current main screen window to the window
-    specified.
-
-    Args:
-        path (str): The full path or relative path of the window to
-            swap to.
-        params (dict): A dictionary of parameters to pass into the
-            window. The keys in the dictionary must match dynamic
-            property names on the target window's root container. The
-            values for each key will be used to set those properties.
-            Optional.
-    """
-    swap_windows(system.nav.getCurrentWindow(), path, params)
-
-
 def swap_windows(from_path, to_path, params=None):
     """Perform a window swap.
 
@@ -75,3 +57,21 @@ def swap_windows(from_path, to_path, params=None):
     _to_path = _get_full_path(from_path, to_path)
     if _to_path != from_path:
         system.nav.swapWindow(from_path, _to_path, params)
+
+
+def swap_to(path, params=None):
+    """Perform a window swap.
+
+    This will swap from the current main screen window to the window
+    specified.
+
+    Args:
+        path (str): The full path or relative path of the window to
+            swap to.
+        params (dict): A dictionary of parameters to pass into the
+            window. The keys in the dictionary must match dynamic
+            property names on the target window's root container. The
+            values for each key will be used to set those properties.
+            Optional.
+    """
+    swap_windows(system.nav.getCurrentWindow(), path, params)
