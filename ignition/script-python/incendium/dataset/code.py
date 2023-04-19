@@ -182,7 +182,7 @@ def from_list_of_dicts(list_of_dicts):
     Returns:
         Dataset: A Dataset representation of the list of dictionaries.
     """
-    keys_set = set()  # type: Set[AnyStr]
+    keys_set = set()
     headers = list(keys_set.union(*(d.keys() for d in list_of_dicts)))
     data = []
     for dict_ in list_of_dicts:
