@@ -6,7 +6,6 @@
 #
 # https://github.com/thecesrom/incendium/blob/HEAD/LICENSE
 #
-
 """incendium.
 
 incendium is a package that extends and wraps some functions from
