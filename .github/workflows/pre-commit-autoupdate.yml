@@ -4,6 +4,7 @@ on:
   schedule:
     # Monday at 12:00 PST
     - cron: '0 20 * * 1'
+  workflow_dispatch:
 
 jobs:
   pre-commit-autoupdate:
@@ -13,8 +14,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Update pre-commit hooks
-        uses: coatl-dev/action-pre-commit-autoupdate@v0
+        uses: coatl-dev/action-pre-commit-autoupdate@6d280d70f3be9f2d0c444f1434c689163e5545e6
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+          gpg-sign: 'yes'
+          gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
           skip-hooks: 'pylint'
           skip-repos: 'flake8'
